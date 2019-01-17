@@ -8,7 +8,7 @@ PORT = 8001
 Buffer_SIZE = 1024
 #get addr info like in client.py
 addr_info = socket.getaddrinfo("www.google.com",80,proto=socket.SOL_TCP)
-(family,socketype,proto,cannonname,sockaddr) = addr_info[0]#for ipv4
+(family,socketype,proto,canonname,sockaddr) = addr_info[0]#for ipv4
 
 def main():
     #create socket
@@ -22,6 +22,7 @@ def main():
         #listen forever for connections
         while True:
             conn,addr = s.accept() # accept any incoming connections and store the addr connects with me
+            print(conn)
             with conn:
                 #create a socket
                 with socket.socket(family,socketype) as proxy_end:
@@ -48,6 +49,6 @@ def main():
                     conn.sendall(full_data_from_google)
                 #print(full_data)
                 #send data back as response
-                conn.sendall(full_data)
+                #conn.sendall(full_data)
 if __name__ == "__main__":
     main()
