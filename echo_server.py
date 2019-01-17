@@ -10,6 +10,8 @@ Buffer_SIZE = 1024
 def main():
     #create socket
     with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
+        #allows to reuse same bind port
+        s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
         s.bind((HOST,PORT))
         s.listen(1) # make socket listen
 
@@ -17,6 +19,7 @@ def main():
         #listen forever for connections
         while True:
             conn,addr = s.accept() # accept any incoming connections and store the addr connects with me
+            print(addr) #Q4
             full_data = b""
 
             while True:

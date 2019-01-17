@@ -29,6 +29,8 @@ def connect_socket(addr):
         print(full_data)
     except:
         print("DID not connect")
+    finally:
+        s.close()
         
 
 def main():
