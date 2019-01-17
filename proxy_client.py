@@ -38,7 +38,7 @@ def connect_socket(addr):
 def main():
     addr_info = socket.getaddrinfo(HOST,PORT,proto=socket.SOL_TCP)
     print(addr_info)
-    addr = addr_info[1]
+    addr = addr_info[0]
     connect_socket(addr)
 
 if __name__=="__main__":
